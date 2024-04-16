@@ -1,0 +1,49 @@
+---
+title: Sit Amet
+createdAt: 2024-02-11 10:01
+tags:
+  - lorem
+  - sit
+  - amet
+  - tag-1
+---
+
+export const handle = { frontmatter }
+
+## Finibus Bonorum et Malorum
+
+Ut at pulvinar mauris. Praesent sed lobortis magna. Proin tristique quam ac tristique vehicula. Phasellus turpis ex, rutrum a lectus in, interdum placerat justo. Phasellus non purus in augue tincidunt dignissim. Etiam eu augue id nibh congue tincidunt. Aliquam at erat risus.
+
+## Sample Code
+
+```tsx title="React Snippet"
+import { useState } from 'react'
+
+export default function Form({ name }) {
+  const [isSent, setIsSent] = useState(false)
+  const [message, setMessage] = useState(`Hi, ${name}`)
+  if (isSent) {
+    return <h1>Your message is on its way!</h1>
+  }
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault()
+        setIsSent(true)
+        postMessage(message)
+      }}
+    >
+      <textarea
+        placeholder="Message"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
+      <button type="submit">Send</button>
+    </form>
+  )
+}
+```
+
+## Curabitur in sem eu
+
+Mauris in diam eu tellus dapibus ultricies. Maecenas vitae accumsan ipsum. Proin convallis ante dignissim purus gravida, eget porttitor turpis ornare. Proin ac elit nisi.
