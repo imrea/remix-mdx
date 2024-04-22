@@ -5,12 +5,11 @@ import { bundleMDX } from 'mdx-bundler'
 import rehypePrettyCode from 'rehype-pretty-code'
 import {
   byCreatedAt,
-  getPostEntries,
-  getPostEntry,
   getPostSlug,
   PostSummary,
   type PostFrontmatter,
 } from '~/models/post'
+import { getPostEntries, getPostEntry } from '~/models/post.server'
 
 export async function getPost(slug: string) {
   let file = await getPostEntry(slug)

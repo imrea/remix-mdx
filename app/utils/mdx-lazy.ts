@@ -11,3 +11,10 @@ export async function getPosts(): Promise<PostSummary[]> {
   )
   return posts.sort(byCreatedAt)
 }
+
+export async function getPost(slug: string): Promise<PostSummary | null> {
+  let postModule = postModulesBySlug[slug]
+  if (!postModule) return null
+  let { frontmatter } = await postModule()
+  return { slug, frontmatter }
+}

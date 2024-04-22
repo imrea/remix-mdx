@@ -1,5 +1,7 @@
-import { parse } from 'node:path'
-import { glob } from 'glob'
+export interface PostMDX {
+  frontmatter: PostFrontmatter
+  default: () => JSX.Element
+}
 
 export interface PostFrontmatter {
   title: string
@@ -13,28 +15,12 @@ export interface PostSummary {
   frontmatter: PostFrontmatter
 }
 
-export async function getPostEntries() {
-  let posts = await glob('app/posts/**/*.mdx', {
-    cwd: process.cwd(),
-    nodir: true,
-  })
-  return posts
-}
-
-export async function getPostEntry(slug: string) {
-  let [post = null, isAmbigiouos] = await glob(
-    [`app/posts/${slug}.mdx`, `app/posts/${slug}/index.mdx`],
-    { cwd: process.cwd(), nodir: true }
-  )
-
-  if (isAmbigiouos)
-    console.warn(`Possibly duplicate post: ${slug} <-> ${slug}/index.mdx`)
-
-  return post
-}
-
 export function getPostSlug(postPath: string) {
-  return parse(postPath.replace('/index.mdx', '')).name
+  return postPath
+    .replace('/index.mdx', '')
+    .replace('.mdx', '')
+    .split('/')
+    .slice(-1)[0]
 }
 
 export function getUniqueTags(posts: { frontmatter: PostFrontmatter }[]) {

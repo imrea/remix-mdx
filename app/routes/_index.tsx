@@ -19,6 +19,9 @@ export default function Index() {
         <li>
           <Link to="static">Static Blog</Link>
         </li>
+        <li>
+          <Link to="lazy">Lazy Blog</Link>
+        </li>
       </ul>
     </div>
   )

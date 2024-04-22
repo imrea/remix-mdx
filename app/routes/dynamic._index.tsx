@@ -1,8 +1,13 @@
+import { MetaFunction } from '@remix-run/node'
 import { json, Link, useLoaderData } from '@remix-run/react'
 import { PostsList } from '~/components/PostsList'
 import { TagsList } from '~/components/TagsList'
 import { getUniqueTags } from '~/models/post'
 import { getPosts } from '~/utils/mdx-dynamic'
+
+export const meta: MetaFunction = () => {
+  return [{ title: 'Dynamic Blog' }]
+}
 
 export const loader = async () => {
   let posts = await getPosts()

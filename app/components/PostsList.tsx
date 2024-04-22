@@ -14,7 +14,12 @@ export function PostsList({ posts }: { posts: PostSummary[] }) {
     >
       {posts.map(({ slug, frontmatter: { title, tags, createdAt } }) => (
         <div key={slug}>
-          <Link to={slug}>{title}</Link>
+          <Link
+            to={slug}
+            // prefetch="intent"
+          >
+            {title}
+          </Link>
           <PostMeta tags={tags} createdAt={createdAt} />
         </div>
       ))}

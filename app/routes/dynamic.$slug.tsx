@@ -13,13 +13,13 @@ export const meta = ({ data }: MetaArgs<typeof loader>) => {
   return [
     { title },
     { name: 'description', content: description },
-    { proeprty: 'og:twitter:title', content: title },
-    { proeprty: 'og:twitter:description', content: description },
+    { property: 'og:twitter:title', content: title },
+    { property: 'og:twitter:description', content: description },
   ]
 }
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
-  let slug = params['*']?.replace(/\/$/, '') || ''
+  let slug = params.slug || ''
   let post = await getPost(slug)
   if (!post) throw json({ message: 'Post Not Found' }, 404)
   return json(post)

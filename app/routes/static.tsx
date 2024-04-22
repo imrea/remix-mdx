@@ -13,8 +13,8 @@ export const meta = (_: MetaArgs) => {
   return [
     // { title },
     // { name: 'description', content: description },
-    // { proeprty: 'og:twitter:title', content: title },
-    // { proeprty: 'og:twitter:description', content: description },
+    // { property: 'og:twitter:title', content: title },
+    // { property: 'og:twitter:description', content: description },
   ]
 }
 

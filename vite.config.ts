@@ -7,7 +7,8 @@ import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
-import { getPostEntries, getPostSlug } from './app/models/post'
+import { getPostSlug } from './app/models/post'
+import { getPostEntries } from './app/models/post.server'
 
 installGlobals()
 
@@ -18,6 +19,9 @@ export default defineConfig({
       rehypePlugins: [[rehypePrettyCode, { theme: 'github-light' }]],
     }),
     remix({
+      // Required for "The Static Way"
+      // We must know the files up front so the slug paths can be assigned
+      // individually and the MDX components can be bundled
       routes: async (defineRoutes) => {
         let posts = await getPostEntries()
         return defineRoutes((route) => {
