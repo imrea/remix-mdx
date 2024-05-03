@@ -24,7 +24,10 @@ export default function StaticBlogIndex() {
       </Link>
       <h1>Lazy Blog</h1>
       <TagsList tags={tags} />
-      <PostsList posts={posts} />
+      <PostsList
+        posts={posts}
+        trueNavigation // This prevents client-side Suspense, we force a document reload and SSR
+      />
     </article>
   )
 }

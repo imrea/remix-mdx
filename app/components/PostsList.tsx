@@ -2,7 +2,13 @@ import { Link } from '@remix-run/react'
 import { PostSummary } from '~/models/post'
 import { PostMeta } from './PostMeta'
 
-export function PostsList({ posts }: { posts: PostSummary[] }) {
+export function PostsList({
+  posts,
+  trueNavigation,
+}: {
+  posts: PostSummary[]
+  trueNavigation?: boolean
+}) {
   return (
     <ul
       style={{
@@ -16,6 +22,7 @@ export function PostsList({ posts }: { posts: PostSummary[] }) {
         <div key={slug}>
           <Link
             to={slug}
+            reloadDocument={trueNavigation}
             // prefetch="intent"
           >
             {title}
